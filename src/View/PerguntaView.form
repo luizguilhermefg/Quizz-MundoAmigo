@@ -80,7 +80,7 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="bnt_novapergunta" min="-2" pref="132" max="-2" attributes="0"/>
+                              <Component id="btn_novapergunta" min="-2" pref="132" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="btn_salvarpergunta" min="-2" pref="132" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -123,7 +123,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="bnt_novapergunta" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
+                          <Component id="btn_novapergunta" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
                           <Component id="btn_salvarpergunta" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
                           <Component id="btn_cancelarpergunta" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
                           <Component id="btn_editarpergunta" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
@@ -177,12 +177,12 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txt_respostacerta">
             </Component>
-            <Component class="javax.swing.JButton" name="bnt_novapergunta">
+            <Component class="javax.swing.JButton" name="btn_novapergunta">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Novo"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bnt_novaperguntaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_novaperguntaActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_cancelarpergunta">
@@ -205,6 +205,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Editar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_editarperguntaActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_excluirpergunta">
               <Properties>

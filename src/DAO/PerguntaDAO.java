@@ -61,5 +61,14 @@ public class PerguntaDAO {
         
         
     }
+     public void definirresposta (Pergunta pergunta) throws SQLException
+     {
+         sql = "update perguntas set resposta_certa = ? where id = ?";
+         pst = Conexao.getInstance().prepareStatement(sql);
+         pst.setInt(1, pergunta.getResposta_certa());
+         pst.setInt(2, pergunta.getId());
+         pst.execute();
+         pst.close();
+     }
 }
 

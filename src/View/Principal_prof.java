@@ -36,7 +36,9 @@ public class Principal_prof extends javax.swing.JFrame {
         painelprincipal = new javax.swing.JPanel();
         menu = new javax.swing.JMenuBar();
         menu_arquivo = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        mni_cadastro = new javax.swing.JMenuItem();
+        mni_quizz = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
         menu_sair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,15 +61,31 @@ public class Principal_prof extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem1.setText("Cadastro de Perguntas e Respostas");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mni_cadastro.setText("Cadastro de Perguntas e Respostas");
+        mni_cadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mni_cadastroActionPerformed(evt);
             }
         });
-        menu_arquivo.add(jMenuItem1);
+        menu_arquivo.add(mni_cadastro);
+
+        mni_quizz.setText("Quizz");
+        mni_quizz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mni_quizzActionPerformed(evt);
+            }
+        });
+        menu_arquivo.add(mni_quizz);
 
         menu.add(menu_arquivo);
+
+        jMenu1.setText("Voltar ao Menu");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        menu.add(jMenu1);
 
         menu_sair.setText("Sair");
         menu_sair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -101,25 +119,50 @@ public class Principal_prof extends javax.swing.JFrame {
     
     }//GEN-LAST:event_menu_arquivoMouseClicked
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mni_cadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mni_cadastroActionPerformed
     try {
         PerguntaView perguntas = new PerguntaView();
 
         painelprincipal.removeAll();
         painelprincipal.add(perguntas);
+        perguntas.setLocation(painelprincipal.getWidth()/2 - perguntas.getWidth()/2,
+                    painelprincipal.getHeight()/2 - perguntas.getHeight()/2);
         painelprincipal.updateUI();
     } catch (SQLException ex) {
         Logger.getLogger(Principal_prof.class.getName()).log(Level.SEVERE, null, ex);
     }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mni_cadastroActionPerformed
+
+    private void mni_quizzActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mni_quizzActionPerformed
+           QuizzView quizz;
+        try {
+            quizz = new QuizzView();
+            painelprincipal.removeAll();
+           painelprincipal.add(quizz);
+           quizz.setLocation(painelprincipal.getWidth()/2 - quizz.getWidth()/2,
+                    painelprincipal.getHeight()/2 - quizz.getHeight()/2);
+           painelprincipal.updateUI();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal_prof.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           
+    }//GEN-LAST:event_mni_quizzActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        MenuView menu = new MenuView();
+        menu.show();
+        this.dispose();
+    }//GEN-LAST:event_jMenu1MouseClicked
 
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar menu;
     private javax.swing.JMenu menu_arquivo;
     private javax.swing.JMenu menu_sair;
+    private javax.swing.JMenuItem mni_cadastro;
+    private javax.swing.JMenuItem mni_quizz;
     private javax.swing.JPanel painelprincipal;
     // End of variables declaration//GEN-END:variables
 }

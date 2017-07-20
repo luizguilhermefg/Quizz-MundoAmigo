@@ -9,6 +9,7 @@ import DAO.PerguntaDAO;
 import DAO.RespostaDAO;
 import Model.Pergunta;
 import Model.Resposta;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +45,8 @@ public class PerguntaView extends javax.swing.JInternalFrame {
         listapergunta = new ArrayList<Pergunta>();
         atualizarTabelaRespostas();
         atualizarTabelaPerguntas();
-        cancelar_pergunta();
-        cancelar_resposta();
+        
+        
         
         
     }
@@ -70,7 +71,7 @@ public class PerguntaView extends javax.swing.JInternalFrame {
         txt_coment = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txt_respostacerta = new javax.swing.JTextField();
-        bnt_novapergunta = new javax.swing.JButton();
+        btn_novapergunta = new javax.swing.JButton();
         btn_cancelarpergunta = new javax.swing.JButton();
         btn_salvarpergunta = new javax.swing.JButton();
         btn_editarpergunta = new javax.swing.JButton();
@@ -122,10 +123,10 @@ public class PerguntaView extends javax.swing.JInternalFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Resposta Certa");
 
-        bnt_novapergunta.setText("Novo");
-        bnt_novapergunta.addActionListener(new java.awt.event.ActionListener() {
+        btn_novapergunta.setText("Novo");
+        btn_novapergunta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bnt_novaperguntaActionPerformed(evt);
+                btn_novaperguntaActionPerformed(evt);
             }
         });
 
@@ -144,6 +145,11 @@ public class PerguntaView extends javax.swing.JInternalFrame {
         });
 
         btn_editarpergunta.setText("Editar");
+        btn_editarpergunta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_editarperguntaActionPerformed(evt);
+            }
+        });
 
         btn_excluirpergunta.setText("Excluir");
 
@@ -190,7 +196,7 @@ public class PerguntaView extends javax.swing.JInternalFrame {
                             .addComponent(txt_respostacerta, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_descpergunta, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(bnt_novapergunta, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_novapergunta, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_salvarpergunta, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -223,7 +229,7 @@ public class PerguntaView extends javax.swing.JInternalFrame {
                         .addComponent(jLabel4)))
                 .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bnt_novapergunta, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_novapergunta, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_salvarpergunta, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_cancelarpergunta, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_editarpergunta, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -457,9 +463,9 @@ public class PerguntaView extends javax.swing.JInternalFrame {
         
         try {
             txt_idpergunta.setText(String.valueOf(perguntadao.salvar(pergunta)));
-            btn_salvarpergunta.setEnabled(false);
+           
             atualizarTabelaPerguntas();
-            salvar_pergunta();
+            
             atualiza_labels();
             
         } catch (SQLException ex) {
@@ -482,35 +488,37 @@ public class PerguntaView extends javax.swing.JInternalFrame {
             txt_idresposta.setText(String.valueOf(respostadao.salvar(resposta)));
             atualizarTabelaRespostas();
             
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(PerguntaView.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
     }//GEN-LAST:event_btn_salvarrespostaActionPerformed
 
-    private void bnt_novaperguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt_novaperguntaActionPerformed
-        nova_pergunta();
-    }//GEN-LAST:event_bnt_novaperguntaActionPerformed
+    private void btn_novaperguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novaperguntaActionPerformed
+       
+    }//GEN-LAST:event_btn_novaperguntaActionPerformed
 
     private void btn_novarespostaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novarespostaActionPerformed
-        nova_resposta();
+        
     }//GEN-LAST:event_btn_novarespostaActionPerformed
 
     private void btn_cancelarrespostaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarrespostaActionPerformed
-        cancelar_resposta();
+        
     }//GEN-LAST:event_btn_cancelarrespostaActionPerformed
 
     private void btn_cancelarperguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarperguntaActionPerformed
-        cancelar_pergunta();
+        
     }//GEN-LAST:event_btn_cancelarperguntaActionPerformed
 
     private void tabela_perguntasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabela_perguntasMouseClicked
+        
         txt_idpergunta.setText(tabela_perguntas.getValueAt(tabela_perguntas.getSelectedRow(),0).toString());
         txt_descpergunta.setText(tabela_perguntas.getValueAt(tabela_perguntas.getSelectedRow(),1).toString());
         txt_coment.setText(tabela_perguntas.getValueAt(tabela_perguntas.getSelectedRow(),2).toString());
         txt_respostacerta.setText(tabela_perguntas.getValueAt(tabela_perguntas.getSelectedRow(),3).toString());
-        nova_perguntasemzerar();
-        atualiza_labels();
+            atualiza_labels();
         try {
             atualizarTabelaRespostas();
         } catch (SQLException ex) {
@@ -524,14 +532,25 @@ public class PerguntaView extends javax.swing.JInternalFrame {
         
             txt_idresposta.setText(tabela_resposta.getValueAt(tabela_resposta.getSelectedRow(),0).toString());
         txt_descricaoresposta.setText(tabela_resposta.getValueAt(tabela_resposta.getSelectedRow(),1).toString());
-        nova_respostasemzerar();
+        
        
         
     }//GEN-LAST:event_tabela_respostaMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        txt_respostacerta.setText(String.valueOf(listaresposta.get(tabela_resposta.getSelectedRow()).getId()));
+        pergunta.setId(Integer.parseInt(txt_idpergunta.getText()));
+        pergunta.setResposta_certa(Integer.parseInt(txt_respostacerta.getText()));
+        try {
+            perguntadao.definirresposta(pergunta);
+        } catch (SQLException ex) {
+            Logger.getLogger(PerguntaView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btn_editarperguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarperguntaActionPerformed
+        
+    }//GEN-LAST:event_btn_editarperguntaActionPerformed
     
     public void atualizarTabelaRespostas() throws SQLException{
         resposta = new Resposta();
@@ -578,90 +597,7 @@ public class PerguntaView extends javax.swing.JInternalFrame {
         tabela_resposta.setRowHeight(25);
         tabela_resposta.updateUI();
     }
-    public void nova_pergunta(){
-        txt_coment.setEnabled(true);
-        txt_descpergunta.setEnabled(true);
-        btn_cancelarpergunta.setEnabled(true);
-        btn_editarpergunta.setEnabled(true);
-        btn_excluirpergunta.setEnabled(true);
-        btn_salvarpergunta.setEnabled(true);
-        txt_respostacerta.setEnabled(true);
-        txt_idpergunta.setText("");
-        txt_descpergunta.setText("");
-        txt_coment.setText("");
-        txt_respostacerta.setText("");
-        
-        
-    
-}
-    public void nova_perguntasemzerar()
-    {
-        txt_coment.setEnabled(true);
-        txt_descpergunta.setEnabled(true);
-        btn_cancelarpergunta.setEnabled(true);
-        btn_editarpergunta.setEnabled(true);
-        btn_excluirpergunta.setEnabled(true);
-        btn_salvarpergunta.setEnabled(true);
-        txt_respostacerta.setEnabled(true);
-    }
-    public void nova_resposta(){
-        txt_descricaoresposta.setEnabled(true);
-        btn_cancelarresposta.setEnabled(true);
-        btn_editarresposta.setEnabled(true);
-        btn_excluirresposta.setEnabled(true);
-        btn_salvarresposta.setEnabled(true);
-        txt_idresposta.setText("");
-        txt_descricaoresposta.setText("");
-    }
-    public void nova_respostasemzerar(){
-        txt_descricaoresposta.setEnabled(true);
-        btn_cancelarresposta.setEnabled(true);
-        btn_editarresposta.setEnabled(true);
-        btn_excluirresposta.setEnabled(true);
-        btn_salvarresposta.setEnabled(true);
-        
-       
-    }
-    public void cancelar_pergunta()
-    {
-        txt_idpergunta.setEnabled(false);
-        txt_coment.setEnabled(false);
-        txt_descpergunta.setEnabled(false);
-        txt_respostacerta.setEnabled(false);
-        btn_cancelarpergunta.setEnabled(false);
-        btn_editarpergunta.setEnabled(false);
-        btn_excluirpergunta.setEnabled(false);
-        btn_salvarpergunta.setEnabled(false);
-        txt_idpergunta.setText("");
-        txt_descpergunta.setText("");
-        txt_coment.setText("");
-        txt_respostacerta.setText("");
-    }
-    public void cancelar_resposta(){
-        txt_idresposta.setEnabled(false);
-        txt_descricaoresposta.setEnabled(false);
-        btn_cancelarresposta.setEnabled(false);
-        btn_editarresposta.setEnabled(false);
-        btn_excluirresposta.setEnabled(false);
-        btn_salvarresposta.setEnabled(false);
-        txt_idresposta.setText("");
-        txt_descricaoresposta.setText("");
-    }
-    public void salvar_pergunta()
-    {
-        btn_cancelarpergunta.setEnabled(false);
-        btn_editarpergunta.setEnabled(false);
-        btn_excluirpergunta.setEnabled(false);
-        btn_salvarpergunta.setEnabled(false);
-    }
-    public void salvar_resposta()
-    {
-        btn_cancelarresposta.setEnabled(false);
-        btn_editarresposta.setEnabled(false);
-        btn_excluirresposta.setEnabled(false);
-        btn_salvarresposta.setEnabled(false);
-    }
-    public void atualizarTabelaPerguntas() throws SQLException{
+     public void atualizarTabelaPerguntas() throws SQLException{
         pergunta = new Pergunta();
         
         listapergunta = perguntadao.ListaPergunta();
@@ -707,14 +643,16 @@ public class PerguntaView extends javax.swing.JInternalFrame {
         lbl_descpergunta.setText(txt_descpergunta.getText());
     }
 
+ 
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bnt_novapergunta;
     private javax.swing.JButton btn_cancelarpergunta;
     private javax.swing.JButton btn_cancelarresposta;
     private javax.swing.JButton btn_editarpergunta;
     private javax.swing.JButton btn_editarresposta;
     private javax.swing.JButton btn_excluirpergunta;
     private javax.swing.JButton btn_excluirresposta;
+    private javax.swing.JButton btn_novapergunta;
     private javax.swing.JButton btn_novaresposta;
     private javax.swing.JButton btn_salvarpergunta;
     private javax.swing.JButton btn_salvarresposta;
