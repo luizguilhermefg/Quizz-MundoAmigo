@@ -24,6 +24,7 @@ public class Conexao implements Serializable {
     private String usuario;
     private String senha;
     private String url;
+    
 
     private Conexao() {
         // Altere o usuário e senha de acordo com o banco de dados instalado
