@@ -17,6 +17,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
+
+
 public class Conexao implements Serializable {
 
     private static Conexao conexao = null;
